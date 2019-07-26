@@ -1,94 +1,58 @@
-import React, { Component } from "react";
+import React from "react";
 import { ACTIONS_TYPE } from "../reducers";
 import store from "../redux/store";
-import FilterLink from "./FilterLink";
+import ToDoList from "./ToDoList";
+import AddToDo from "./AddToDo";
+import Footer from "./Footer";
 
-const FILTERS = {
+export const FILTERS = {
   SHOW_ALL: "SHOW_ALL",
   SHOW_ACTIVES: "SHOW_ACTIVES",
   SHOW_COMPLETED: "SHOW_COMPLETED"
 };
 let nextToDoId = 2;
 
-class ToDoApp extends Component {
-  getVisibleToDos = (todos, filter) => {
-    switch (filter) {
-      case FILTERS.SHOW_ALL:
-        return todos;
-      case FILTERS.SHOW_COMPLETED:
-        return todos.filter(t => t.completed);
-      case FILTERS.SHOW_ACTIVES:
-        return todos.filter(t => !t.completed);
-    }
-  };
-  render() {
-    const { todos, visibilityFilter } = this.props;
-    const visibleToDos = this.getVisibleToDos(todos, visibilityFilter);
-    return (
-      <div>
-        <input type="text" ref={node => (this.input = node)} />
-        <button
-          onClick={() => {
-            if (this.input.value) {
-              store.dispatch({
-                type: ACTIONS_TYPE.ADD_TODO,
-                text: this.input.value,
-                id: nextToDoId++
-              });
-              this.input.value = "";
-              this.input.focus();
-            }
-            console.log(store.getState());
-          }}
-        >
-          Add ToDo
-        </button>
-        <ol>
-          {visibleToDos.map(todo => (
-            <li
-              key={todo.id}
-              onClick={() => {
-                store.dispatch({
-                  type: ACTIONS_TYPE.TOGGLE_TODO,
-                  id: todo.id
-                });
-              }}
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-                cursor: "pointer"
-              }}
-            >
-              {todo.text}
-            </li>
-          ))}
-        </ol>
-        <p>
-          Show:
-          {"  "}
-          <FilterLink
-            filter={FILTERS.SHOW_ALL}
-            currentFilter={visibilityFilter}
-          >
-            All
-          </FilterLink>
-          {"  "}
-          <FilterLink
-            filter={FILTERS.SHOW_ACTIVES}
-            currentFilter={visibilityFilter}
-          >
-            Actives
-          </FilterLink>
-          {"  "}
-          <FilterLink
-            filter={FILTERS.SHOW_COMPLETED}
-            currentFilter={visibilityFilter}
-          >
-            Completed
-          </FilterLink>
-        </p>
-      </div>
-    );
+const getVisibleToDos = (todos, filter) => {
+  switch (filter) {
+    case FILTERS.SHOW_COMPLETED:
+      return todos.filter(t => t.completed);
+    case FILTERS.SHOW_ACTIVES:
+      return todos.filter(t => !t.completed);
+    default:
+      return todos;
   }
-}
+};
+
+const ToDoApp = ({ todos, visibilityFilter }) => (
+  <div>
+    <AddToDo
+      onAddClick={text => {
+        store.dispatch({
+          type: ACTIONS_TYPE.ADD_TODO,
+          text,
+          id: ++nextToDoId
+        });
+      }}
+    />
+    <ToDoList
+      handleClick={id => {
+        store.dispatch({
+          type: ACTIONS_TYPE.TOGGLE_TODO,
+          id
+        });
+      }}
+      visibleToDos={getVisibleToDos(todos, visibilityFilter)}
+    />
+    <Footer
+      visibilityFilter={visibilityFilter}
+      onFilterClick={filter =>
+        store.dispatch({
+          type: ACTIONS_TYPE.SET_VISIBILITY_FILTER,
+          filter
+        })
+      }
+    />
+  </div>
+);
 
 export default ToDoApp;
