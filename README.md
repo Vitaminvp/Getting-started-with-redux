@@ -14,6 +14,5 @@ The principles of Redux aren't new, but they are packaged and presented for you 
 
 In this course, Dan Abramov will show you the fundamentals of Redux, so that you can start using it to simplify your applications.
 
-There are some amazing community notes on this course here on Github.
 
-Once you are finished with this course be sure to check out part 2: building-react-applications-with-idiomatic-redux
+Once you are finished with this course be sure to check out part 2: [building-react-applications-with-idiomatic-redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
