@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/Getting-started-with-redux/static/js/main.1f99c066.chunk.js",
+    "main.js.map": "/Getting-started-with-redux/static/js/main.1f99c066.chunk.js.map",
+    "runtime~main.js": "/Getting-started-with-redux/static/js/runtime~main.06875eb5.js",
+    "runtime~main.js.map": "/Getting-started-with-redux/static/js/runtime~main.06875eb5.js.map",
+    "static/js/2.f66fcbdb.chunk.js": "/Getting-started-with-redux/static/js/2.f66fcbdb.chunk.js",
+    "static/js/2.f66fcbdb.chunk.js.map": "/Getting-started-with-redux/static/js/2.f66fcbdb.chunk.js.map",
+    "index.html": "/Getting-started-with-redux/index.html",
+    "precache-manifest.dd2c5280e1836726c649e6f9408fd77d.js": "/Getting-started-with-redux/precache-manifest.dd2c5280e1836726c649e6f9408fd77d.js",
+    "service-worker.js": "/Getting-started-with-redux/service-worker.js"
+  }
+}
