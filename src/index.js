@@ -1,51 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import createStore from "./redux/createStore";
-import Counter from "./Counter";
+import store from "./redux/store"
+import ToDoApp from "./Components/ToDoApp";
 
-const ACTIONS_TYPE = {
-  INCREMENT: "INCREMENT",
-  DECREMENT: "DECREMENT"
-};
-
-const counter = (state = 0, action) => {
-  switch (action.type) {
-    case ACTIONS_TYPE.INCREMENT:
-      return state + 1;
-    case ACTIONS_TYPE.DECREMENT:
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
-const store = createStore(counter);
-
-// console.log(store.getState());
-// store.dispatch({ type: ACTIONS_TYPE.INCREMENT });
-// console.log(store.getState());
+console.log(store.getState());
 
 const render = () => {
-  ReactDOM.render(
-      <Counter
-          onIncrement={() => {
-            console.log(ACTIONS_TYPE.INCREMENT);
-            store.dispatch({ type: ACTIONS_TYPE.INCREMENT });
-          }}
-          onDecrement={() => {
-            console.log(ACTIONS_TYPE.DECREMENT);
-            store.dispatch({ type: ACTIONS_TYPE.DECREMENT });
-          }}
-          value={store.getState()}
-      />,
-      document.getElementById("root")
-  );
+  ReactDOM.render(<ToDoApp {...store.getState()} />, document.getElementById("root"));
 };
 
-render();
+
 store.subscribe(render);
+render();
 
-// document.addEventListener("click", () => {
-//   store.dispatch({ type: ACTIONS_TYPE.INCREMENT });
-// });
 
+
+
+
+
+
+
+
+
+
+// const toDoApp = (state = {}, action) => {
+//   return {
+//       todos: todos(state.todos, action),
+//       visibilityFilter: visibilityFilter(state.visibilityFilter, action)
+//   };
+// };
