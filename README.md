@@ -1,3 +1,7 @@
+### Demo page
+[Demo](https://vitaminvp.github.io/Getting-started-with-redux/)
+
+
 In this comprehensive tutorial, Dan Abramov - the creator of Redux - will teach you how to manage state in your React application with Redux.
 
 State management is absolutely critical in providing users with a well-crafted experience with minimal bugs.
