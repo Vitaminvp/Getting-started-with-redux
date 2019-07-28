@@ -2,8 +2,9 @@
   "name": "getting-started-with-redux",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://vitaminvp.github.io/Getting-started-with-redux",
+  "homepage": "https://vitaminvp.github.io/Getting-started-with-redux",
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",

@@ -1,17 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import store from "./redux/store"
+import store from "./redux/store";
 import ToDoApp from "./Components/ToDoApp";
+import Context from "./redux/context";
 
-console.log(store.getState());
-
-const render = () => {
-  ReactDOM.render(<ToDoApp {...store.getState()} />, document.getElementById("root"));
-};
-
-
-store.subscribe(render);
-render();
+ReactDOM.render(
+  <Context.Provider value={store}>
+    <ToDoApp />
+  </Context.Provider>,
+  document.getElementById("root")
+);
 
 
 
@@ -19,9 +17,8 @@ render();
 
 
 
-
-
-
+// store.subscribe(render);
+// render();
 
 // const toDoApp = (state = {}, action) => {
 //   return {

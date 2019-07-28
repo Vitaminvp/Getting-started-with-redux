@@ -1,20 +1,44 @@
 import React from "react";
+import Link from "./Link";
+import { ACTIONS_TYPE } from "../reducers";
+// import PropTypes from "prop-types";
+import Context from "../redux/context";
 
-const FilterLink = ({ filter, children, currentFilter, onFilterClick }) => {
-  if (currentFilter === filter) {
-    return <span>{children}</span>;
+class FilterLink extends React.Component {
+  static contextType = Context;
+  componentDidMount() {
+    const store = this.context;
+    this.unsubscribe = store.subscribe(() => {
+      this.forceUpdate();
+    });
   }
-  return (
-    <a
-      href="/#"
-      onClick={e => {
-        e.preventDefault();
-        onFilterClick(filter)
-      }}
-    >
-      {children}
-    </a>
-  );
-};
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  render() {
+    const store = this.context;
+    const { children, filter } = this.props;
+    const { visibilityFilter } = store.getState();
+    return (
+      <Link
+        active={visibilityFilter === filter}
+        onClick={() => {
+          store.dispatch({
+            type: ACTIONS_TYPE.SET_VISIBILITY_FILTER,
+            filter
+          });
+        }}
+      >
+        {children}
+      </Link>
+    );
+  }
+}
+
+// FilterLink.contextType = Context;
+// FilterLink.propsTypes = {
+//     store: PropTypes.object
+// };
 
 export default FilterLink;

@@ -1,10 +1,10 @@
 import React from "react";
 import ToDo from "./ToDo";
 
-const ToDoList = ({ visibleToDos, handleClick }) => {
+const ToDoList = ({ toDos, handleClick }) => {
   return (
     <ol>
-      {visibleToDos.map(({id, completed, text}) => (
+      {toDos.map(({id, completed, text}) => (
         <ToDo
           key={id}
           onClick={() => handleClick(id)}
@@ -14,6 +14,9 @@ const ToDoList = ({ visibleToDos, handleClick }) => {
       ))}
     </ol>
   );
+};
+ToDoList.defaultProps = {
+  toDos: [],
 };
 
 export default ToDoList;
