@@ -1,24 +1,18 @@
 import React from "react";
-import { ACTIONS_TYPE } from "../reducers";
-import Context from "../redux/context";
+// import Context from "../redux/context";
+import {connect} from "react-redux";
+import {addToDo} from "../actionCreators";
 
-let nextToDoId = 2;
-
-const AddToDo = () => {
+const AddToDoPure = ({dispatch}) => {
   let input;
   return (
-      <Context.Consumer>
-          {store => (
+
               <>
                   <input type="text" ref={node => (input = node)} />
                   <button
                       onClick={() => {
                           if (input.value) {
-                              store.dispatch({
-                                  type: ACTIONS_TYPE.ADD_TODO,
-                                  text: input.value,
-                                  id: ++nextToDoId
-                              });
+                              dispatch(addToDo(input.value));
                               input.value = "";
                               input.focus();
                           }
@@ -27,8 +21,7 @@ const AddToDo = () => {
                       Add ToDos
                   </button>
               </>
-          )}
-      </Context.Consumer>
+
   );
 };
 
@@ -36,4 +29,4 @@ const AddToDo = () => {
 //   store: React.PropTypes.object
 // };
 
-export default AddToDo;
+export default connect()(AddToDoPure);

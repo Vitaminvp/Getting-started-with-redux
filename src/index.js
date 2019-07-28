@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import store from "./redux/store";
 import ToDoApp from "./Components/ToDoApp";
-import Context from "./redux/context";
+// import Context from "./redux/context";
+import {Provider} from "react-redux"
 
 ReactDOM.render(
-  <Context.Provider value={store}>
+  <Provider store={store}>
     <ToDoApp />
-  </Context.Provider>,
+  </Provider>,
   document.getElementById("root")
 );
 

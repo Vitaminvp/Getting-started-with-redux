@@ -1,7 +1,7 @@
 import React from "react";
 import AddToDo from "./AddToDo";
 import Footer from "./Footer";
-import VisibleToDoList from "./VisibleToDoList";
+import VisibleToDoList from "./ToDoList";
 
 export const FILTERS = {
   SHOW_ALL: "SHOW_ALL",

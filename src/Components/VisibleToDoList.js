@@ -5,16 +5,7 @@ import { FILTERS } from "./ToDoApp";
 import Context from "../redux/context";
 // import PropTypes from "prop-types";
 
-const getVisibleToDos = (toDos, filter) => {
-  switch (filter) {
-    case FILTERS.SHOW_COMPLETED:
-      return toDos.filter(t => t.completed);
-    case FILTERS.SHOW_ACTIVES:
-      return toDos.filter(t => !t.completed);
-    default:
-      return toDos;
-  }
-};
+
 
 class VisibleToDoList extends React.Component {
   static contextType = Context;
@@ -53,4 +44,4 @@ class VisibleToDoList extends React.Component {
 
 //VisibleToDoList.contextType = Context;
 
-export default VisibleToDoList;
+//export default VisibleToDoList;
