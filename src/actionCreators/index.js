@@ -1,9 +1,10 @@
 import { ACTIONS_TYPE } from "../reducers";
-let nextToDoId = 2;
+import {v4} from "node-uuid";
+
 export const addToDo = text => ({
   type: ACTIONS_TYPE.ADD_TODO,
   text: text,
-  id: ++nextToDoId
+  id: v4()
 });
 
 export const setFilter = filter => ({

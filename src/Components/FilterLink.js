@@ -34,7 +34,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => {
+  onClick() {
     dispatch(setFilter(ownProps.filter));
   }
 });

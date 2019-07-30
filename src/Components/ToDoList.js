@@ -38,7 +38,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: id => {
+  handleClick(id) {
     dispatch(toggleToDo(id));
   }
 });

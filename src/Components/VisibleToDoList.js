@@ -26,7 +26,7 @@ class VisibleToDoList extends React.Component {
     const { todos, visibilityFilter } = store.getState();
     return (
       <ToDoList
-        handleClick={id => {
+        handleClick={(id) => {
           store.dispatch({
             type: ACTIONS_TYPE.TOGGLE_TODO,
             id
