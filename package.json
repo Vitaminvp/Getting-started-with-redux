@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://vitaminvp.github.io/Getting-started-with-redux",
   "dependencies": {
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "node-uuid": "^1.4.8",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
